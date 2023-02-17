@@ -39,3 +39,16 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
+
+###
+# Research pdf
+# These files are generated if you use latexmk as your lates verion
+# Update as needed
+###
+/Paper/main_paper/*.pdf
+/Paper/main_paper/*.out
+/Paper/main_paper/*.fls 
+/Paper/main_paper/*.log
+/Paper/main_paper/*.aux
+/Paper/main_paper/*.fdb_latexmk
+/Paper/main_paper/*.synctex.gz
