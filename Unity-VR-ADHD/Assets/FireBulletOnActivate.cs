@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Interaction;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class FireBulletOnActivate : MonoBehaviour
 {
-
     public GameObject bullet;
     public Transform spawnPoint;
     public float fireSpeed = 20;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +23,11 @@ public class FireBulletOnActivate : MonoBehaviour
         
     }
 
-    public void FireBullet(ActivateEventArgs arg)
+    public void FireBullet(ActivateEventArgs args)
     {
-        GameObject spawnBullet = Instantiate(bullet);
-        spawnBullet.Transform.position = spawnPoint.position;
-        spawnBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed;
-        destroy(spawnBullet, 5);
+        GameObject spawnedBullet = Instantiate(bullet);
+        spawnedBullet.transform.position = spawnPoint.position;
+        spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed;
+        Destroy(spawnedBullet, 5);
     }
 }
