@@ -10,9 +10,16 @@ public class SetMoveType : MonoBehaviour
     public ActionBasedContinuousTurnProvider contTurnProvider;
     public ActionBasedSnapTurnProvider snapTurnProvider;
 
-    public ActivateTeleportationRay teleportRay; 
+    public GameObject leftTeleportation;
+    public GameObject rightTeleportation;
+
+    public ActivateTeleportationRay teleportationRay;
     public ActionBasedContinuousMoveProvider moveProvider;
 
+    void Start()
+    {
+        
+    }
     public void SetTypeFromIndexTurn(int index)
     {
         if(index == 0)
@@ -32,15 +39,17 @@ public class SetMoveType : MonoBehaviour
         if(index == 0)
         {
             moveProvider.enabled = true;
-            teleportRay.enabled = false;
+            leftTeleportation.SetActive(false);
+            rightTeleportation.SetActive(false);
+            teleportationRay.enabled = false;
         }
         else if(index == 1)
         {
             moveProvider.enabled = false;
-            teleportRay.enabled = true;
+            leftTeleportation.SetActive(true);
+            rightTeleportation.SetActive(true);
+            teleportationRay.enabled = true;
         }
     }
-
-
 
 }
