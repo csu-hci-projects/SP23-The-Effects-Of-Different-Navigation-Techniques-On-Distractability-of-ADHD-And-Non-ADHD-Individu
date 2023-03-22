@@ -3274,6 +3274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 1215455931}
+  distractionDistance: 3
 --- !u!136 &512484224
 CapsuleCollider:
   m_ObjectHideFlags: 0

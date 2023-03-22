@@ -8,6 +8,7 @@ public class LookedAt : MonoBehaviour
     public Transform cameraTransform;
     private Renderer render;
     private Transform distractionTransform;
+    public float distractionDistance = 5.0f;
 
     public void Start() {
         render = GetComponent<Renderer>();
@@ -22,16 +23,17 @@ public class LookedAt : MonoBehaviour
             Vector3 camForward = cameraTransform.transform.forward;
             // Finds angle
             float angle = Vector2.Angle(new Vector2(direction.x, direction.z), new Vector2(camForward.x, camForward.z));
-
-            if(angle < 15){
-                LogData();
+            float distance = Vector3.Distance(distractionTransform.position, cameraTransform.position);
+            if(angle < 15 && distance < distractionDistance){
+                LogData(distance);
             }
         }
     }
 
-    private void LogData(){
+    private void LogData(float distance){
         Debug.Log("Player is distracted");
         Debug.Log("Logging data");
+        Debug.Log(distance);
 
         // This is where the data will be saved to the file
     }
