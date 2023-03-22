@@ -13,7 +13,15 @@ public class PlaySoundOnTrigger : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other) {
-        source.Play();
-        Debug.Log("Playing");
+        Debug.Log(other.gameObject.tag);
+        if(other.CompareTag("Player")){
+            source.Play();
+        }
+    }
+
+    public void OnTriggerExit(Collider other){
+        if(other.CompareTag("Player")){
+            source.Stop();
+        }
     }
 }

@@ -3238,6 +3238,7 @@ GameObject:
   - component: {fileID: 512484223}
   - component: {fileID: 512484227}
   - component: {fileID: 512484228}
+  - component: {fileID: 512484229}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -3348,10 +3349,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1a679aaa5e127bd4aa53de68d6188e21, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3446,6 +3447,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 2, z: 5}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &512484229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512484221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d594b3bb3317c2844ba6d29907305c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &523028874
 GameObject:
   m_ObjectHideFlags: 0
@@ -6485,7 +6498,6 @@ GameObject:
   - component: {fileID: 1215455934}
   - component: {fileID: 1215455933}
   - component: {fileID: 1215455932}
-  - component: {fileID: 1215455936}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6681,20 +6693,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!136 &1215455936
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215455930}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1279485353
 GameObject:
   m_ObjectHideFlags: 0
