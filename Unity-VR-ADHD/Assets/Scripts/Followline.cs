@@ -24,17 +24,41 @@ public class Followline : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+{
+    if(agent.hasPath)
     {
-        if(agent.hasPath)
-        {
-            //Make it also go up and down the line
-            line.positionCount = agent.path.corners.Length;
-            line.SetPositions(agent.path.corners);
-            
-        }
-        else
-        {
-            line.positionCount = 0;
-        }
+        Vector3[] smoothedPath = SmoothPath(agent.path.corners);
+        line.positionCount = smoothedPath.Length;
+        line.SetPositions(smoothedPath);
     }
+    else
+    {
+        line.positionCount = 0;
+    }
+}
+
+Vector3[] SmoothPath(Vector3[] path)
+{
+    List<Vector3> smoothedPath = new List<Vector3>();
+    smoothedPath.Add(path[0]);
+    for (int i = 1; i < path.Length; i++)
+    {
+        Vector3 direction = (path[i] - path[i-1]).normalized;
+        float distance = Vector3.Distance(path[i-1], path[i]);
+        int steps = Mathf.CeilToInt(distance / 0.1f); // Increase or decrease the step size to adjust smoothing
+        float stepSize = distance / steps;
+        for (int j = 1; j < steps; j++)
+        {
+            Vector3 point = path[i-1] + (direction * j * stepSize);
+            RaycastHit hit;
+            if (Physics.Raycast(point + Vector3.up * 10f, Vector3.down, out hit, 20f, NavMesh.AllAreas))
+            {
+                point = hit.point + Vector3.up * 0.1f; // Increase or decrease the height offset to adjust line position
+            }
+            smoothedPath.Add(point);
+        }
+        smoothedPath.Add(path[i]);
+    }
+    return smoothedPath.ToArray();
+}
 }
