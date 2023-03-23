@@ -14,7 +14,7 @@ public class CRGrabInteractableTwoAttach : XRGrabInteractable
         {
             attachTransform = leftAttachTransform;
         }
-        else if(args.interactorObject.transform.CompareTag("Right H and"))
+        else if(args.interactorObject.transform.CompareTag("Right Hand"))
         {
             attachTransform = rightAttachTransform;
         }

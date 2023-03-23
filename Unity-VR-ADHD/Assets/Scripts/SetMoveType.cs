@@ -39,15 +39,15 @@ public class SetMoveType : MonoBehaviour
         if(index == 0)
         {
             moveProvider.enabled = true;
-            leftTeleportation.SetActive(false);
-            rightTeleportation.SetActive(false);
+            // leftTeleportation.SetActive(false);
+            // rightTeleportation.SetActive(false);
             teleportationRay.enabled = false;
         }
         else if(index == 1)
         {
             moveProvider.enabled = false;
-            leftTeleportation.SetActive(true);
-            rightTeleportation.SetActive(true);
+            // leftTeleportation.SetActive(true);
+            // rightTeleportation.SetActive(true);
             teleportationRay.enabled = true;
         }
     }
