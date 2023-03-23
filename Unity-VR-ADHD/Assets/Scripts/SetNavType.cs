@@ -8,7 +8,7 @@ public class SetNavType : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject navigationPointer;
-    public GameObject navigationLine;
+    public LineRenderer navigationLine;
 
     void Start()
     {
@@ -19,17 +19,17 @@ public class SetNavType : MonoBehaviour
         if (index == 0)
         {
             navigationPointer.SetActive(false);
-            navigationLine.SetActive(false);
+            navigationLine.enabled = false;
         }
         else if (index == 1)
         {
             navigationPointer.SetActive(true);
-            navigationLine.SetActive(false);
+            navigationLine.enabled = false;
         }
         else if(index == 2)
         {
             navigationPointer.SetActive(false);
-            navigationLine.SetActive(true);
+            navigationLine.enabled = true;
         }
     }
 }
