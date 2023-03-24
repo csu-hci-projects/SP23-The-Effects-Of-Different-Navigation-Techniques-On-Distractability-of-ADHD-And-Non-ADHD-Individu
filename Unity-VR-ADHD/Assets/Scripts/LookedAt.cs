@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class LookedAt : MonoBehaviour
 {
 
     public Transform cameraTransform;
+    public float distractionDistance = 5.0f;
+    public int distractionAngle = 25;
     private Renderer render;
     private Transform distractionTransform;
-    public float distractionDistance = 5.0f;
+
+    private StreamWriter streamWriter;
+    
 
     public void Start() {
         render = GetComponent<Renderer>();
         distractionTransform = GetComponent<Transform>();
         InvokeRepeating("PlayerIsLooking", 0, 1.0f); // Runs PlayerIsLookign every half second
+        streamWriter = File.CreateText(NewFileName());
+    }
+
+    void OnApplicationQuit(){
+        streamWriter.Close();
     }
 
     private void PlayerIsLooking(){
@@ -24,18 +34,26 @@ public class LookedAt : MonoBehaviour
             // Finds angle
             float angle = Vector2.Angle(new Vector2(direction.x, direction.z), new Vector2(camForward.x, camForward.z));
             float distance = Vector3.Distance(distractionTransform.position, cameraTransform.position);
-            if(angle < 15 && distance < distractionDistance){
-                LogData(distance);
+            if(angle < distractionAngle && distance < distractionDistance){
+                Log(distance.ToString());
             }
         }
     }
 
-    private void LogData(float distance){
-        Debug.Log("Player is distracted");
-        Debug.Log("Logging data");
-        Debug.Log(distance);
+    private void Log(string data){
+        string toLog = string.Format("Object: {0} Time: {1} Distance: {2} ", gameObject.name, Time.time, data);
+        streamWriter.WriteLine(toLog);
+    }
 
-        // This is where the data will be saved to the file
+    private string NewFileName(){
+        string name = gameObject.name;
+        string fileName = "./Logs/UserData1-" + name + ".log";
+        int count = 2;
+        while(File.Exists(fileName)){
+            fileName = "./Logs/UserData" + count + "-" + name + ".log";
+            count += 1;
+        }
+        return fileName;
     }
     
 }
