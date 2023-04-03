@@ -25,6 +25,13 @@ public class Logger{
         }
     }
 
+    public void Log(string start, string end, string time){
+        string toLog = string.Format("Start: {0}\nEnd: {1}\nTotal Time: {2}", start, end, time);
+        using(StreamWriter sw = File.AppendText(fileName)){
+            sw.WriteLine(toLog);
+        }        
+    }
+
     private string NewFileName(){
         string fileName = dir + "/User1-" + name + ".csv";
         int count = 2;
