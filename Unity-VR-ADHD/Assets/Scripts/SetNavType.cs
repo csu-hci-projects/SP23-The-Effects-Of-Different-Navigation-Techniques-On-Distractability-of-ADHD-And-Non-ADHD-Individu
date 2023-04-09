@@ -10,10 +10,6 @@ public class SetNavType : MonoBehaviour
     public GameObject navigationPointer;
     public LineRenderer navigationLine;
 
-    void Start()
-    {
-        
-    }
     public void SetTypeFromIndexNav(int index)
     {
         if (index == 0)
