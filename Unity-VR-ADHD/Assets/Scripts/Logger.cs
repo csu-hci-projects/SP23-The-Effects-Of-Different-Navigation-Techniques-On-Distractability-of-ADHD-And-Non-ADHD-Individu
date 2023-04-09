@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using UnityEngine.SceneManagement;
 
 public class Logger{
     private string fileName;
     private string name;
+    static int user = 1;
     private const string dir = "./UserData";
 
     public Logger(string objName){
@@ -33,11 +34,11 @@ public class Logger{
     }
 
     private string NewFileName(){
-        string fileName = dir + "/User1-" + name + ".csv";
-        int count = 2;
+        int scene =  SceneManager.GetActiveScene().buildIndex;
+        string fileName = dir + "/User" + user + "-" + name + "-" + scene + ".csv";
         while(File.Exists(fileName)){
-            fileName = dir + "/User" + count + "-" + name + ".csv";
-            count += 1;
+            user += 1;
+            fileName = dir + "/User" + user + "-" + name + "-" + scene + ".csv";
         }
         return fileName;
     }
