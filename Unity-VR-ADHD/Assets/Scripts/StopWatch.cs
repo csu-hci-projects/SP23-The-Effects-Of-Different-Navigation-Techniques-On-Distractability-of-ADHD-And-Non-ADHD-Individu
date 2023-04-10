@@ -13,6 +13,8 @@ public class StopWatch : MonoBehaviour
                 Debug.Log("Goal");
                 if(SceneManager.GetActiveScene().buildIndex != 1){
                     StartCoroutine(SwitchScene());
+                }else{
+                    Application.Quit();
                 }
             }
         }else{
